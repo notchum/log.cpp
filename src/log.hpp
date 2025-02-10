@@ -31,10 +31,10 @@ extern bool is_file_set;
 void set_log_file(const char *file_name);
 void vlog(int log_level, const char* file, int line, fmt::string_view str, fmt::format_args args);
 
-template <typename S, typename... Args>
-void log_log(int log_level, const char *file, int line, const S& format, Args&&... args)
+template <typename... T>
+void log_log(int log_level, const char *file, int line, fmt::format_string<T...> format, T&&... args)
 {
-  vlog(log_level, file, line, format, fmt::make_args_checked<Args...>(format, args...));
+  vlog(log_level, file, line, format, fmt::make_format_args(args...));
 }
 
 #define LOG_DEBUG(format, ...) log_log(DEBUG, __FILE__, __LINE__, FMT_STRING(format), ##__VA_ARGS__)

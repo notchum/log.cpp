@@ -20,9 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-#include "logger.hpp"
+#include "log.hpp"
 
-fmt::v7::color level_colors[] = {
+fmt::v11::color level_colors[] = {
   fmt::color::cyan,       // "\x1b[36m",
   fmt::color::lime_green, // "\x1b[32m",
   fmt::color::yellow,     // "\x1b[33m",
